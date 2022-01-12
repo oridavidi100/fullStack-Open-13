@@ -1,0 +1,102 @@
+postgres://ruznsfsmkqknbc:59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd@ec2-34-230-198-12.compute-1.amazonaws.com:5432/d4oo647dk7ofjk
+
+ DATABASE_URL: postgres://<username>:<password>@<host-of-postgres-addon>:5432/<db-name>
+
+
+ username  =  ruznsfsmkqknbc
+ password  =  59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd
+ host-of-postgres-addon  =  ec2-34-230-198-12.compute-1.amazonaws.com
+ db-name  =   d4oo647dk7ofjk
+
+ DATABASE_URL = postgres://ruznsfsmkqknbc:59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd@ec2-34-230-198-12.compute-1.amazonaws.com:5432/d4oo647dk7ofjk
+
+
+ heroku run psql -h ec2-34-230-198-12.compute-1.amazonaws.com -p 5432 -U ruznsfsmkqknbc d4oo647dk7ofjk -a open-13
+
+
+ CREATE TABLE blogs  (
+    id SERIAL UNIQUE,
+    author text ,
+    url text NOT NULL,
+    title text NOT NULL,
+    likes int DEFAULT 0 
+);
+
+id (unique, incrementing id)
+author (string)
+url (string that cannot be empty)
+title (string that cannot be empty)
+likes (integer with default value zero)
+
+
+
+
+
+
+
+
+
+CV
+curriculum vitae
+Ori Davidi 
+Full-Stack Engineer 
+Phone  :0546865550 
+Linkdin : https://www.linkedin.com/in/ori-davidi/  
+Mail : Oridavidi100@gmail.com 
+ 
+Full-Stack developer with a strong interest in projects requiring conceptual and analytical thinking. 
+I enjoy solving problems and facing new challenges. autodidact, hard    worker,with interpersonal skills .
+I've received an excellence award for my work in the army.
+Passion for computers and sports , Gamer .
+ 
+ 
+Education :
+ 
+Scale Up Velocity: 
+( july 2020-march 2022 )
+ 6 months of intensive Full-Stack bootcamp  of extensive learning, practicing, and developing of real-life projects with a focus on front-end, back-end, and cyber security ,Usage of industry-level technologies, tools, and methodologies.                             
+ Intended for former combat soldiers .
+ 
+Gimnasia Realit high school:
+( 2016-2018 )  
+Computer Science 5 units . 
+physics 5 units .
+ 
+ 
+Army service :
+( november 18 -july 2021 )
+combat soldier and platoon sergeant in kfir brigade .
+Use of technological tools in the company .
+Working under pressure .
+Decision making and handling complicated situations .
+Responsibility for myself and my soldiers .
+Commend on more than 20 soldiers .
+ 
+ 
+ 
+Languages :
+Hebrew -native .
+ English - Highly proficient .  
+ 
+ 
+ 
+skills :
+Front End :
+HTML & CSS .
+JavaScript .
+TypeScript .
+React .
+Redux .
+Back End :
+Node.js .
+Express.js .
+MongoDB .
+MySQL .
+Other :
+Git & GitHub .
+Docker .
+Object -Oriented-Design .
+Jest Cypress .
+Python .
+AWS Amazon Cloud-Server  .
+XSS, SQLI, Dictionary Attacks, Ddos, Phishing .
