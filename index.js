@@ -1,76 +1,99 @@
-require('dotenv').config();
-const { Sequelize, Model, DataTypes } = require('sequelize');
 const express = require('express');
 const app = express();
+
+const { PORT } = require('./util/config');
+const { connectToDatabase } = require('./util/db');
+const blogsRouter = require('./controllers/blog');
+const usersRouter = require('./controllers/user');
+const loginRouter = require('./controllers/login');
+const authorsRouter = require('./controllers/author');
 app.use(express.json());
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
-class Note extends Model {}
-Note.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    important: {
-      type: DataTypes.BOOLEAN,
-    },
-    date: {
-      type: DataTypes.DATE,
-    },
-  },
-  {
-    sequelize,
-    underscored: true,
-    timestamps: false,
-    modelName: 'note',
-  }
-);
+app.use('/api/authors', authorsRouter);
+app.use('/api/blogs', blogsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/login', loginRouter);
 
-app.get('/api/notes', async (req, res) => {
-  const notes = await Note.findAll();
-  //   const notes = await sequelize.query('SELECT * FROM notes', { type: QueryTypes.SELECT });
-  res.json(notes);
-});
+const start = async () => {
+  await connectToDatabase();
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+};
 
-app.post('/api/notes', async (req, res) => {
-  try {
-    console.log(req.body);
-    const note = await Note.create(req.body);
-    //   const note = Note.build(req.body);
-    //   note.important = true
-    //   await note.save();
-    res.json(note);
-  } catch (error) {
-    return res.status(400).json({ error });
-  }
-});
-app.put('/api/notes/:id', async (req, res) => {
-  const note = await Note.findByPk(req.params.id);
-  if (note) {
-    note.important = req.body.important;
-    await note.save();
-    res.json(note);
-  } else {
-    res.status(404).end();
-  }
-});
+start();
+// require('dotenv').config();
+// const { Sequelize, Model, DataTypes } = require('sequelize');
+// const express = require('express');
+// const app = express();
+// app.use(express.json());
+// const sequelize = new Sequelize(process.env.DATABASE_URL, {
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// });
+// class Note extends Model {}
+// Note.init(
+//   {
+//     id: {
+//       type: DataTypes.INTEGER,
+//       primaryKey: true,
+//       autoIncrement: true,
+//     },
+//     content: {
+//       type: DataTypes.TEXT,
+//       allowNull: false,
+//     },
+//     important: {
+//       type: DataTypes.BOOLEAN,
+//     },
+//     date: {
+//       type: DataTypes.DATE,
+//     },
+//   },
+//   {
+//     sequelize,
+//     underscored: true,
+//     timestamps: false,
+//     modelName: 'note',
+//   }
+// );
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// app.get('/api/notes', async (req, res) => {
+//   const notes = await Note.findAll();
+//   //   const notes = await sequelize.query('SELECT * FROM notes', { type: QueryTypes.SELECT });
+//   res.json(notes);
+// });
+
+// app.post('/api/notes', async (req, res) => {
+//   try {
+//     console.log(req.body);
+//     const note = await Note.create(req.body);
+//     //   const note = Note.build(req.body);
+//     //   note.important = true
+//     //   await note.save();
+//     res.json(note);
+//   } catch (error) {
+//     return res.status(400).json({ error });
+//   }
+// });
+// app.put('/api/notes/:id', async (req, res) => {
+//   const note = await Note.findByPk(req.params.id);
+//   if (note) {
+//     note.important = req.body.important;
+//     await note.save();
+//     res.json(note);
+//   } else {
+//     res.status(404).end();
+//   }
+// });
+
+// const PORT = process.env.PORT || 3001;
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 // const main = async () => {
 //   try {

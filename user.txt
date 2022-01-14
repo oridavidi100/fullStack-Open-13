@@ -1,17 +1,17 @@
-postgres://ruznsfsmkqknbc:59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd@ec2-34-230-198-12.compute-1.amazonaws.com:5432/d4oo647dk7ofjk
+ postgres://bhroqtlnorwdnn:48334f915b9918a9634d1c08880f541101a4cb4cc4138bd9e48f5566c161e632@ec2-18-234-17-166.compute-1.amazonaws.com:5432/d49cn9f9ut28fk
+
+
 
  DATABASE_URL: postgres://<username>:<password>@<host-of-postgres-addon>:5432/<db-name>
 
 
- username  =  ruznsfsmkqknbc
- password  =  59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd
- host-of-postgres-addon  =  ec2-34-230-198-12.compute-1.amazonaws.com
- db-name  =   d4oo647dk7ofjk
+ username  =  bhroqtlnorwdnn
+ password  =  48334f915b9918a9634d1c08880f541101a4cb4cc4138bd9e48f5566c161e632
+ host-of-postgres-addon  =  ec2-18-234-17-166.compute-1.amazonaws.com
+ db-name  =   d49cn9f9ut28fk
 
- DATABASE_URL = postgres://ruznsfsmkqknbc:59a33ef97fb1459eb3e62e5bf488460adca4b7c8c19c2484d08fed377db5b8fd@ec2-34-230-198-12.compute-1.amazonaws.com:5432/d4oo647dk7ofjk
+heroku run psql -h ec2-18-234-17-166.compute-1.amazonaws.com -p 5432 -U bhroqtlnorwdnn d49cn9f9ut28fk -a open-13
 
-
- heroku run psql -h ec2-34-230-198-12.compute-1.amazonaws.com -p 5432 -U ruznsfsmkqknbc d4oo647dk7ofjk -a open-13
 
 
  CREATE TABLE blogs  (
