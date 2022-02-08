@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Blog, User } = require('../models');
 const { tokenExtractor, blogFinder } = require('../middleware/blogMiddleware');
-const { sequelize } = require('../util/db');
+// const { sequelize } = require('../util/db');
 const { Op } = require('sequelize');
+console.log('here ', Blog, User);
 router.get('/', async (req, res, next) => {
   try {
     const { search } = req.query;
